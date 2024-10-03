@@ -2,6 +2,7 @@
 
 use bevy_ecs::prelude::*;
 use bevy_reflect::prelude::*;
+use serde::{Serialize, Deserialize};
 
 use crate::*;
 
@@ -16,6 +17,7 @@ use self::{precision::GridPrecision, reference_frame::ReferenceFrame};
 /// [`ReferenceFrame`], and the transform is the position of the entity relative to the center of
 /// that cell.
 #[derive(Component, Default, Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy, Hash, Reflect)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[reflect(Component, Default, PartialEq)]
 pub struct GridCell<P: GridPrecision> {
     /// The x-index of the cell.
