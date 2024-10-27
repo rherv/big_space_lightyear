@@ -17,7 +17,7 @@ bevy_math = { version = "0.14.0", default-features = false }
 bevy_reflect = { version = "0.14.0", default-features = false }
 bevy_transform = { version = "0.14.0", default-features = false }
 bevy_utils = { version = "0.14.0", default-features = false }
-serde = { version = "1.0", default-features = false }
+serde = { version = "1.0.201", default-features = false }
 # Optional
 bevy_color = { version = "0.14.0", default-features = false, optional = true }
 bevy_gizmos = { version = "0.14.0", default-features = false, optional = true }
