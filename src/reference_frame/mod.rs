@@ -10,6 +10,7 @@ use bevy_transform::prelude::*;
 use crate::{precision::GridPrecision, GridCell};
 
 use self::local_origin::LocalFloatingOrigin;
+use serde::{Serialize, Deserialize};
 
 pub mod local_origin;
 pub mod propagation;
@@ -34,6 +35,7 @@ pub mod propagation;
 /// the same rotating reference frame, instead of moving rapidly through space around a star, or
 /// worse, around the center of the galaxy.
 #[derive(Debug, Clone, Reflect, Component)]
+#[derive(Serialize, Deserialize)]
 pub struct ReferenceFrame<P: GridPrecision + Reflect> {
     /// The high-precision position of the floating origin's current grid cell local to this
     /// reference frame.

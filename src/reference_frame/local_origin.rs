@@ -24,6 +24,7 @@ use super::ReferenceFrame;
 mod inner {
     use bevy_math::{prelude::*, DAffine3, DMat3, DQuat};
     use bevy_reflect::prelude::*;
+    use serde::{Serialize, Deserialize};
 
     use crate::{precision::GridPrecision, GridCell};
 
@@ -42,6 +43,8 @@ mod inner {
     /// about its axis and orbiting about a star, it will not align with the reference frame of the
     /// star system!
     #[derive(Default, Debug, Clone, PartialEq, Reflect)]
+    #[derive(Serialize, Deserialize)]
+    
     pub struct LocalFloatingOrigin<P: GridPrecision> {
         /// The local cell that the floating origin's grid cell origin falls into.
         cell: GridCell<P>,
