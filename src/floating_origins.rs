@@ -27,10 +27,20 @@ pub struct FloatingOrigin;
 /// big space uses the floating origin contained within it to compute the
 /// [`GlobalTransform`](bevy_transform::components::GlobalTransform) of all spatial entities within
 /// that `BigSpace`.
-#[derive(Component, Serialize, Deserialize, Clone, Debug, PartialEq, Reflect, Default)]
+#[derive(Component, Serialize, Deserialize, Clone, Debug, Reflect, Default)]
 pub struct BigSpace {
     /// Set the entity to use as the floating origin within this high precision hierarchy.
     pub floating_origin: Option<Entity>,
+}
+
+impl PartialEq for BigSpace {
+    fn eq(&self, other: &Self) -> bool {
+        match (self.floating_origin, other.floating_origin) {
+            (Some(se), Some(oe)) => se == oe,
+            (None, None) => true,
+            _ => false
+        }
+    }
 }
 
 impl BigSpace {
