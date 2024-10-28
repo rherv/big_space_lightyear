@@ -12,8 +12,7 @@ use serde::{Serialize, Deserialize};
 /// The [`GlobalTransform`](bevy_transform::components::GlobalTransform) of all entities within this
 /// [`BigSpace`] will be computed relative to this floating origin. There should always be exactly
 /// one entity marked with this component within a [`BigSpace`].
-#[derive(Component, Reflect)]
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Component, Serialize, Deserialize, Clone, Debug, PartialEq, Reflect)]
 pub struct FloatingOrigin;
 
 /// A "big space" is a hierarchy of high precision reference frames, rendered with a floating
@@ -28,8 +27,7 @@ pub struct FloatingOrigin;
 /// big space uses the floating origin contained within it to compute the
 /// [`GlobalTransform`](bevy_transform::components::GlobalTransform) of all spatial entities within
 /// that `BigSpace`.
-#[derive(Debug, Default, Component, Reflect)]
-#[derive(Serialize, Deserialize, PartialEq, Clone)]
+#[derive(Component, Serialize, Deserialize, Clone, Debug, PartialEq, Reflect)]
 pub struct BigSpace {
     /// Set the entity to use as the floating origin within this high precision hierarchy.
     pub floating_origin: Option<Entity>,
